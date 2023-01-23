@@ -42,9 +42,18 @@ def getStartTime(segment):
     return startTime
 
 def getEndTime(segment):
-    times = segment.split('AM')
-    if len(times) == 1:
-        times = times[0].split('PM')
+    pmSplit = segment.split('PM')
+    amSplit = pmSplit[0].split('AM')
+    times = " . . ".split('.')
+    if len(pmSplit) == 1:
+        times = amSplit
+    elif len(pmSplit) == 2:
+        times[0] = amSplit[0]
+        times[1] = amSplit[1]
+        times[2] = pmSplit[1]
+    elif len(pmSplit) == 3:
+        times = pmSplit
+    
     if 'AM' in segment and 'PM' not in segment:
         dayHalf = "AM"
     else:
