@@ -96,7 +96,7 @@ def toDateTime(date, time):
     dateSplit = date.split('/')
     if time != "NA":
         timeMod = time[:5].split(':')
-    if "PM" in time and int(timeMod[0]) >= 1:
+    if "PM" in time and int(timeMod[0]) != 12:
         timeMod[0] = int(timeMod[0]) + 12
         timeMod[0] = str(timeMod[0])
     dateTime = dateSplit[2] + '-' + dateSplit[0] + '-' + dateSplit[1] + 'T' + timeMod[0] + ':' + timeMod[1] + ":00-05:00"
